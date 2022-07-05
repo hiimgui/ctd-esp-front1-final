@@ -25,13 +25,16 @@ const Filtros = ({
 
   return (
     <div className="filtros">
-      <label for="nome">Filtrar por nome:</label>
+      <label htmlFor="nome">Filtrar por nome:</label>
       <input
         type="text"
         name="nome"
         value={searchText}
         onChange={handleChange}
       />
+      <button type="button" onClick={filterCharacters}>
+        Buscar
+      </button>
     </div>
   );
 };
