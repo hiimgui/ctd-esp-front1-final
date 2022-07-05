@@ -1,7 +1,8 @@
 //4 actions principais
 type ICharacter = {
-  id: number;
-  name: string;
+  id: number,
+  name: string,
+  
 };
 export function fetchCharactersStart() {
   return {

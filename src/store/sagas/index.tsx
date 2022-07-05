@@ -1,14 +1,20 @@
-import { takeLatest, call, put } from "redux-saga/effects";
-import { fetchCharactersSuccess, fetchCharactersError } from "../actions/characters.actions";
+import { takeLatest, call, put, cancel, delay } from "redux-saga/effects";
+import {
+  fetchCharactersSuccess,
+  fetchCharactersError,
+} from "../actions/characters.actions";
 
 function* fetchCharacterSaga() {
   try {
     //@ts-ignore
-    const response = yield call(fetch, "https://rickandmortyapi.com/api/character");
+    const response = yield call(
+      fetch,
+      "https://rickandmortyapi.com/api/character"
+    );
     //@ts-ignore
     const data = yield response.json();
     yield put(fetchCharactersSuccess(data));
-  } catch (error : any) {
+  } catch (error: any) {
     yield put(fetchCharactersError(error.message));
   }
 }
@@ -33,6 +39,7 @@ function* filterCharactersSaga({ payload }) {
 
 export default function* sagas() {
   yield takeLatest("FETCH_CHARACTERS_START", fetchCharacterSaga);
+
   //@ts-ignore
   yield takeLatest("FILTER_CHARACTERS_START", filterCharactersSaga);
 }
