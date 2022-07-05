@@ -23,7 +23,23 @@ const CardPersonagem = ({
   useEffect(() => fetchCharactersStart(), [fetchCharactersStart]);
   return (
     <>
-      <main>{console.log(characters)}</main>
+      <main>
+        {characters.isFetching ? (
+          <span>Carregando</span>
+        ) : (
+          <div>
+            {console.log(characters.characters.results)}
+            {characters.characters.results
+              ? characters.characters.results.map((char) => (
+                  <li key={char.id}>
+                    {char.name}
+                    <img src={char.image} alt={char.name} />
+                  </li>
+                ))
+              : null}
+          </div>
+        )}
+      </main>
     </>
     // <div className="card-personagem">
     //   <img
@@ -45,5 +61,3 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ fetchCharactersStart, filterCharactersStart }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardPersonagem);
-
-// export default CardPersonagem;

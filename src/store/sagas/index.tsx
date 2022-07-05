@@ -20,7 +20,7 @@ function* filterCharactersSaga({ payload }) {
     //@ts-ignore
     const response = yield call(
       fetch,
-      `https://rickandmortyapi.com/api/character/${payload}`
+      `https://rickandmortyapi.com/api/character/?name=${payload}`
     );
     //@ts-ignore
     const data = yield response.json();
