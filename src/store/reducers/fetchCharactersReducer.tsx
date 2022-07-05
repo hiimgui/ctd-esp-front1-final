@@ -15,6 +15,10 @@ export function fetchCharactersReducer(
 ) {
   switch (action.type) {
     case "FETCH_CHARACTERS_START":
+      return {
+        ...state,
+        isFetching: true,
+      };
     case "FILTER_CHARACTERS_START":
       return {
         ...state,

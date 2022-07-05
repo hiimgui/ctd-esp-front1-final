@@ -17,7 +17,7 @@ export function filterCharactersStart(searchText: string) {
 
 export function fetchCharactersSuccess(characters: ICharacter[]) {
   return {
-    type: "FETCH_CHARACTERS_START",
+    type: "FETCH_CHARACTERS_SUCCESS",
     payload: characters,
   };
 }
