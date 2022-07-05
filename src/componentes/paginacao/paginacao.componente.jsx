@@ -1,5 +1,5 @@
 import "./paginacao.css";
-
+import { useState } from "react";
 /**
  * Componente que contém os botões para paginar
  *
@@ -8,13 +8,24 @@ import "./paginacao.css";
  *
  * @returns Elemento JSX
  */
+
 const Paginacao = () => {
+  const [page, setPage] = useState(0);
+
+  const handleNext = () => {
+    setPage((page) => page + 1);
+    console.log(page);
+  };
+  const handleBack = () => {
+    setPage((page) => page - 1);
+    console.log(page);
+  };
   return (
     <div className="paginacao">
-      <button disabled={true} className={"primary"}>
+      <button onClick={handleBack} className={"primary"}>
         Anterior
       </button>
-      <button disabled={false} className={"primary"}>
+      <button disabled={false} onClick={handleNext} className={"primary"}>
         Próximo
       </button>
     </div>

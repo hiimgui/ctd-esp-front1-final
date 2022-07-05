@@ -39,16 +39,6 @@ const CardPersonagem = ({
         </>
       )}
     </>
-    // <div className="card-personagem">
-    //   <img
-    //     src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-    //     alt="Rick Sanchez"
-    //   />
-    //   <div className="card-personagem-body">
-    //     <span>Rick Sanchez</span>
-    //     <BotaoFavorito isFavorito={false} />
-    //   </div>
-    // </div>
   );
 };
 const mapStateToProps = (state) => ({
