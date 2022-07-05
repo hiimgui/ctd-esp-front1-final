@@ -23,23 +23,21 @@ const CardPersonagem = ({
   useEffect(() => fetchCharactersStart(), [fetchCharactersStart]);
   return (
     <>
-      <main>
-        {characters.isFetching ? (
-          <span>Carregando</span>
-        ) : (
-          <div>
-            {console.log(characters.characters.results)}
-            {characters.characters.results
-              ? characters.characters.results.map((char) => (
-                  <li key={char.id}>
-                    {char.name}
-                    <img src={char.image} alt={char.name} />
-                  </li>
-                ))
-              : null}
-          </div>
-        )}
-      </main>
+      {characters.isFetching ? (
+        <span>Carregando</span>
+      ) : (
+        <>
+          {console.log(characters.characters.results)}
+          {characters.characters.results
+            ? characters.characters.results.map((char) => (
+                <li className="card-personagem" key={char.id}>
+                  {char.name}
+                  <img src={char.image} alt={char.name} />
+                </li>
+              ))
+            : null}
+        </>
+      )}
     </>
     // <div className="card-personagem">
     //   <img
