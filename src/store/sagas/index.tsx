@@ -32,6 +32,20 @@ function* paginateCharacterForwardSaga({ payload }) {
     yield put(fetchCharactersError(error.message));
   }
 }
+function* paginateCharacterBackwardsSaga({ payload }) {
+  try {
+    //@ts-ignore
+    const response = yield call(
+      fetch,
+      `https://rickandmortyapi.com/api/character?page=${payload}`
+    );
+    //@ts-ignore
+    const data = yield response.json();
+    yield put(fetchCharactersSuccess(data));
+  } catch (error: any) {
+    yield put(fetchCharactersError(error.message));
+  }
+}
 
 //responsavel por funcao de filtro
 //@ts-ignore
@@ -55,6 +69,10 @@ export default function* sagas() {
   yield takeLatest("FETCH_CHARACTERS_START", fetchCharacterSaga);
   //@ts-ignore
   yield takeLatest("PAGINATE_CHARACTERS_FORWARD", paginateCharacterForwardSaga);
+  //@ts-ignore
+  yield takeLatest("PAGINATE_CHARACTERS_BACKWARDS",
+    paginateCharacterBackwardsSaga
+  );
   //@ts-ignore
   yield takeLatest("FILTER_CHARACTERS_START", filterCharactersSaga);
 }

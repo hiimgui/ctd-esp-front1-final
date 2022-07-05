@@ -19,7 +19,7 @@ const Paginacao = ({
   paginateCharactersBackwards,
   paginateCharactersForward,
 }) => {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
 
   const handleNext = () => {
     setPage((page) => page + 1);
@@ -28,6 +28,7 @@ const Paginacao = ({
   const handleBack = () => {
     setPage((page) => page - 1);
     paginateCharactersBackwards(page);
+    console.log(page);
   };
 
   return (
