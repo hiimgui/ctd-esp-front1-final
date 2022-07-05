@@ -1,5 +1,11 @@
 import "./paginacao.css";
 import { useState } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import {
+  paginateCharactersForward,
+  paginateCharactersBackwards,
+} from "../../store/actions/characters.actions";
 /**
  * Componente que contém os botões para paginar
  *
@@ -9,17 +15,21 @@ import { useState } from "react";
  * @returns Elemento JSX
  */
 
-const Paginacao = () => {
+const Paginacao = ({
+  paginateCharactersBackwards,
+  paginateCharactersForward,
+}) => {
   const [page, setPage] = useState(0);
 
   const handleNext = () => {
     setPage((page) => page + 1);
-    console.log(page);
+    paginateCharactersForward(page);
   };
   const handleBack = () => {
     setPage((page) => page - 1);
-    console.log(page);
+    paginateCharactersBackwards(page);
   };
+
   return (
     <div className="paginacao">
       <button onClick={handleBack} className={"primary"}>
@@ -32,4 +42,14 @@ const Paginacao = () => {
   );
 };
 
-export default Paginacao;
+const mapStateToProps = (state) => ({
+  characters: state.characters,
+});
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    { paginateCharactersBackwards, paginateCharactersForward },
+    dispatch
+  );
+
+export default connect(mapStateToProps, mapDispatchToProps)(Paginacao);

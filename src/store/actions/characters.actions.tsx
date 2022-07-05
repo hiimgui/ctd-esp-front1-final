@@ -15,6 +15,18 @@ export function filterCharactersStart(searchText: string) {
     payload: searchText,
   };
 }
+export function paginateCharactersForward(page: number) {
+  return {
+    type: "PAGINATE_CHARACTERS_FORWARD",
+    payload: page,
+  };
+}
+export function paginateCharactersBackwards(page: number) {
+  return {
+    type: "PAGINATE_CHARACTERS_BACKWARDS",
+    payload: page,
+  };
+}
 
 export function fetchCharactersSuccess(characters: ICharacter[]) {
   return {

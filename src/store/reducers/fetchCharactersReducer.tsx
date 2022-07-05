@@ -38,6 +38,16 @@ export function fetchCharactersReducer(
         isFetching: false,
         errorMessage: action.payload,
       };
+    case "PAGINATE_CHARACTERS_FORWARD":
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case "PAGINATE_CHARACTERS_BACKWARDS":
+      return {
+        ...state,
+        isFetching: true,
+      };
     default:
       return state;
   }
