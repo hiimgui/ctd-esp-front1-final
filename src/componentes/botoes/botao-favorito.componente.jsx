@@ -12,7 +12,7 @@ import { useState } from "react";
  */
 const BotaoFavorito = ({ isFavorito, onClick }) => {
   const [favorito, setFavorito] = useState(false);
-  const src = favorito ? star : starfilled;
+  const src = favorito ? starfilled : star;
   const handleClick = () => {
     setFavorito(!favorito);
   };

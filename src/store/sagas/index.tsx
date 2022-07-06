@@ -13,7 +13,15 @@ function* fetchCharacterSaga() {
     );
     //@ts-ignore
     const data = yield response.json();
-    yield put(fetchCharactersSuccess(data));
+
+    const favorito = data.results.map((dataItem: any) => ({
+      
+        ...dataItem,
+        favorito: false,
+      
+    }));
+    console.log(favorito);
+    yield put(fetchCharactersSuccess(favorito));
   } catch (error: any) {
     yield put(fetchCharactersError(error.message));
   }
@@ -70,8 +78,7 @@ export default function* sagas() {
   //@ts-ignore
   yield takeLatest("PAGINATE_CHARACTERS_FORWARD", paginateCharacterForwardSaga);
   //@ts-ignore
-  yield takeLatest("PAGINATE_CHARACTERS_BACKWARDS",
-    paginateCharacterBackwardsSaga
+  yield takeLatest( "PAGINATE_CHARACTERS_BACKWARDS",paginateCharacterBackwardsSaga
   );
   //@ts-ignore
   yield takeLatest("FILTER_CHARACTERS_START", filterCharactersSaga);

@@ -2,6 +2,8 @@
 
 Exame Final de Frontend IV
 
+Fazer um map no array de produtos no Saga ou Thunk que busca a lista de produtos e adiciona a chave de favoritos: false,  quando clicado em favoritos, modificar a propriedade do produto clicado para true, na página de favoritos, no Saga ou Thunk que for filtrar os produtos, utilizar o filter do Javascript para trazer apenas os produtos com favorito === true
+
 ## Indice
 
 - [Requisitos](#requisitos)

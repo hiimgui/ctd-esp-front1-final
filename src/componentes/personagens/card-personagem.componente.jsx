@@ -27,12 +27,12 @@ const CardPersonagem = ({
         <span>Carregando</span>
       ) : (
         <>
-          {console.log(characters.characters.info)}
-          {characters.characters.results
-            ? characters.characters.results.map((char) => (
+          {console.log(characters.characters)}
+          {characters.characters
+            ? characters.characters.map((char) => (
                 <li className="card-personagem" key={char.id}>
-                  {char.name}
-                  <BotaoFavorito />
+                 <p> {char.name}</p>
+                  <BotaoFavorito  />
                   <img src={char.image} alt={char.name} />
                 </li>
               ))
