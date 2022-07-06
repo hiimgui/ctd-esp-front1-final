@@ -27,11 +27,12 @@ const CardPersonagem = ({
         <span>Carregando</span>
       ) : (
         <>
-          {console.log(characters.characters.results)}
+          {console.log(characters.characters.info)}
           {characters.characters.results
             ? characters.characters.results.map((char) => (
                 <li className="card-personagem" key={char.id}>
                   {char.name}
+                  <BotaoFavorito />
                   <img src={char.image} alt={char.name} />
                 </li>
               ))
@@ -41,6 +42,7 @@ const CardPersonagem = ({
     </>
   );
 };
+
 const mapStateToProps = (state) => ({
   characters: state.characters,
 });

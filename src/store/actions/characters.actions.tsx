@@ -1,8 +1,8 @@
 //4 actions principais
 type ICharacter = {
-  id: number,
-  name: string,
-  
+  id: number;
+  name: string;
+  image: string;
 };
 export function fetchCharactersStart() {
   return {
@@ -21,10 +21,10 @@ export function paginateCharactersForward(page: number) {
     payload: page,
   };
 }
-export function paginateCharactersBackwards(page: number) {
+export function paginateCharactersBackwards(url: string) {
   return {
     type: "PAGINATE_CHARACTERS_BACKWARDS",
-    payload: page,
+    payload: url,
   };
 }
 
